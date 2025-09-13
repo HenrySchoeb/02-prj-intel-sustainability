@@ -1,1 +1,86 @@
+/* style.css - Simple CSS for a horizontally scrolling timeline
+	 This file is for beginners and uses basic CSS only. */
+
+body {
+	font-family: Arial, sans-serif;
+	background: #f5f5f5;
+	margin: 0;
+	padding: 0;
+}
+
+.timeline-container {
+	width: 100%;
+	overflow-x: auto; /* Allows horizontal scrolling */
+	white-space: nowrap; /* Prevents wrapping */
+	padding: 30px 0;
+	background: #fff;
+	border-bottom: 2px solid #e0e0e0;
+}
+
+.timeline {
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.timeline-event {
+	display: inline-block;
+	vertical-align: top;
+	background: #e3f2fd;
+	border: 2px solid #90caf9;
+	border-radius: 10px;
+	margin: 0 20px;
+	padding: 16px 24px;
+	min-width: 120px;
+	text-align: center;
+	position: relative;
+}
+
+.timeline-event .date {
+	font-weight: bold;
+	color: #1976d2;
+	font-size: 1.1em;
+	margin-bottom: 8px;
+	display: block;
+}
+
+.timeline-event .desc {
+	color: #333;
+	font-size: 0.95em;
+}
+
+/* Draw a line connecting the events */
+.timeline-event::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -20px;
+	width: 40px;
+	height: 4px;
+	background: #90caf9;
+	transform: translateY(-50%);
+	z-index: 0;
+}
+
+/* Remove the line after the last event */
+.timeline-event:last-child::after {
+	display: none;
+}
+
+/* Responsive: Make sure timeline is scrollable on small screens */
+@media (max-width: 600px) {
+	.timeline-event {
+		min-width: 90px;
+		padding: 10px 12px;
+		font-size: 0.9em;
+	}
+}
+
+/* Add a little scroll bar styling for visibility */
+.timeline-container::-webkit-scrollbar {
+	height: 8px;
+}
+.timeline-container::-webkit-scrollbar-thumb {
+	background: #90caf9;
+	border-radius: 4px;
+}
 /* Add your CSS here */
